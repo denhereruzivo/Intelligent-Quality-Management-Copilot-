@@ -1,0 +1,19 @@
+# Annex D: Technical Architecture Specifications
+### Denhe reRuzivo AI — Intelligent Quality Management Copilot
+
+This document contains the completed backend architecture questionnaire requested in Annex D of the AI4I Product Readiness guidelines.
+
+---
+
+| Architecture Item | Participant Response |
+| :--- | :--- |
+| **Users** | • **Quality managers, consultants and process owners**: develop procedures, policies, manuals and risk registers.<br>• **Internal and lead auditors**: plan audits, record evidence, write nonconformities and track corrective actions.<br>• **Laboratory, inspection and certification personnel**: prepare controlled documentation and accreditation-readiness evidence.<br>• **Employees**: access approved, plain-language or local-language instructions. |
+| **Access Channel** | • **Primary Channel**: Responsive Web Application (optimized for desktop document editing and tablet-based audit walks).<br>• **Offline Channel**: Service Worker-cached forms for local storage data capture when offline. |
+| **Frontend** | • **Framework**: HTML5, Vanilla JavaScript, and Tailwind CSS (or standard CSS grid layout) to minimize compilation overhead and ensure high performance on local devices.<br>• **Libraries**: Lightweight editor library (e.g., Quill or Tiptap) for document editing. |
+| **Backend** | • **Framework**: Python (FastAPI) due to native compatibility with AI libraries, asynchronous performance, and simple API routing.<br>• **App Server**: Uvicorn running inside a Docker container. |
+| **Database** | • **Relational database**: PostgreSQL for tenant configuration, user profiles, approvals, audit trails, CAPA records, risk registers and readiness evidence.<br>• **Vector database**: Pinecone or locally hosted Weaviate for rights-controlled retrieval; indexes may contain only source content QMIZ or the tenant is licensed or permitted to use.<br>• **File storage**: encrypted MinIO or S3-compatible storage for source documents and approved PDF/Docx outputs. |
+| **AI Layer** | • **Embedding and inference models**: selected after pilot evaluation for accuracy, cost, language support, privacy and controllability; model providers are not fixed by this concept document.<br>• **RAG and validation**: LangChain/LlamaIndex or equivalent routes queries by tenant, standard, jurisdiction and rights; validation checks source coverage, required fields and uncertainty.<br>• **Multilingual service**: translation/explanation workflows for Shona, Ndebele and plain English are evaluated with bilingual quality experts before use. |
+| **Integrations** | • **Authentication**: OpenID Connect / OAuth2 through a suitable identity provider or local deployment.<br>• **Exports**: PDF/Docx generation for approved procedures, policies, audit reports, risk registers, CAPA records and training materials.<br>• **Notifications**: email/SMS/WhatsApp integration may notify owners of overdue audit or corrective-action tasks, subject to consent and pilot need. |
+| **Security** | • **Auth**: Role-Based Access Control (RBAC) separating Auditor, Manager, and Viewer permissions.<br>• **Encryption**: TLS 1.3 in-transit; AES-256 for database storage at-rest.<br>• **Secrets**: Decoupled environment variables injected via vault/secrets manager (no keys in code). |
+| **Monitoring** | • **Application Metrics**: Prometheus and Grafana for monitoring API latency and error rates.<br>• **Logging**: Python standard logging outputting structured JSON logs to a centralized server. |
+| **Outputs** | • **Quality artefacts**: reviewed PDF/Docx procedures, policies, manuals, audit programmes, checklists, nonconformity reports, risk registers and local-language training material.<br>• **Workflows**: CAPA tracking, approval history, source traceability and readiness dashboards. All AI-generated output is labelled as a draft until authorised review and approval. |
