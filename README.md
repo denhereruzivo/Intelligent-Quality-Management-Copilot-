@@ -28,6 +28,9 @@ This repository is an evidence pack, not a runnable product. Start with the [sub
 - [Annex B: Deployment and Operational Plan](annexes/annex-b-deployment-plan.md)
 - [Annex D: Technical Architecture Specifications](annexes/annex-d-technical-architecture.md)
 
+### Designs
+- [Figma Wireframe (Desktop only)](https://relume-royal-77897971.figma.site/)
+
 ## Proposed system workflow
 
 The platform functions as a copilot for quality managers, auditors, laboratory personnel, consultants and operational teams. It reduces the cost and effort of implementing management systems while preserving professional accountability: all generated material remains a reviewable draft, not certification or legal advice.
